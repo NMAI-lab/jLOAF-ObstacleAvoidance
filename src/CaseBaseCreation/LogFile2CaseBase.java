@@ -41,9 +41,9 @@ public class LogFile2CaseBase {
 			input = Line.split(",");
 			
 			mcinput.add(new AtomicInput("sonar",new Feature(Double.parseDouble(input[0])),Atomic_strat1));
-			mcinput.add(new AtomicInput("touch",new Feature(Double.parseDouble(input[1])),Atomic_strat2));
-			mcinput.add(new AtomicInput("sound",new Feature(Double.parseDouble(input[2])),Atomic_strat2));
-			action = new OAAction(input[4]);
+			mcinput.add(new AtomicInput("touch",new Feature(Double.parseDouble(input[1])+1.0),Atomic_strat2));
+			mcinput.add(new AtomicInput("sound",new Feature(Double.parseDouble(input[2])+1.0),Atomic_strat2));
+			action = new OAAction(convertToNumeric(input[4]));
 			
 			cb.createThenAdd(mcinput, action, stateBasedSim);	
 		}
@@ -53,6 +53,22 @@ public class LogFile2CaseBase {
 		System.out.println("Writing to file: " + outfile);
 		CaseBase.save(cb, outfile);
 		System.out.println("Done!");
+	}
+
+	private String convertToNumeric(String string) {
+		String num = "";
+		if(string.equals("F")) {
+			num = "1";
+		}else if (string.equals("B")) {
+			num="2";
+		}else if (string.equals("RI")) {
+			num="3";
+		}else if (string.equals("LE")) {
+			num="4";
+		}else {
+			num="5";
+		}	
+		return num;
 	}
 
 }
