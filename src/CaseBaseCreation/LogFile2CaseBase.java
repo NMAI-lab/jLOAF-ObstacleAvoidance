@@ -41,8 +41,8 @@ public class LogFile2CaseBase {
 			input = Line.split(",");
 			
 			mcinput.add(new AtomicInput("sonar",new Feature(Double.parseDouble(input[0])),Atomic_strat1));
-			mcinput.add(new AtomicInput("touch",new Feature(Double.parseDouble(input[1])+1.0),Atomic_strat2));
-			mcinput.add(new AtomicInput("sound",new Feature(Double.parseDouble(input[2])+1.0),Atomic_strat2));
+			//mcinput.add(new AtomicInput("touch",new Feature(Double.parseDouble(input[1])+1),Atomic_strat2));
+			//mcinput.add(new AtomicInput("sound",new Feature(Double.parseDouble(input[2])+1),Atomic_strat2));
 			action = new OAAction(convertToNumeric(input[4]));
 			
 			cb.createThenAdd(mcinput, action, stateBasedSim);	
